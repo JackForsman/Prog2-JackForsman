@@ -12,5 +12,9 @@ def rövarspråk():
 
 rövarspråk()
 
+def baklänges(ord):
+    ord = ord[::-1]
+    print(ord)
 
+baklänges("jag")
 
