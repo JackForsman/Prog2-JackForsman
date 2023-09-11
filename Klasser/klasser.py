@@ -15,3 +15,31 @@ if person1.godkänd == True:
 print(person1.glad)
 
 Elev.presentera()
+
+class Bil:
+    antalbilar = 0
+    def __init__(self, __maxHastighet):
+        self.__maxHastighet = __maxHastighet
+        Bil.antalbilar += 1
+    
+    def getMaxhastighet(self):
+        return self.__maxHastighet
+    
+    def setMaxhastighet(maxHastighet):
+        self.__maxHastighet = maxHastighet
+        
+    
+    def milestokm(miles):
+        return 1.6093*miles
+    
+bil1 = Bil(65)
+bil2 = Bil(54)
+
+print(Bil.antalbilar)
+print(Bil.milestokm(15)) 
+
+print(bil2.getMaxhastighet())
+
+bil1.setMaxhastighet(1)
+print(bil2.getMaxhastighet())
+
