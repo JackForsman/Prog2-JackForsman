@@ -6,12 +6,12 @@ window = Tk()
 nummer = ["3","4","5","6","7","8","9","10","11","12","13","14","15","16","17","18"]
 raser = Label(window, text= "Raser")
 raser.pack()
-dropdown = ttk.Combobox(window, values=["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"])
+dropdown = ttk.Combobox(window, values=["Människa", "Dvärg", "Troll", "Alv", "Orch"])
 dropdown.pack()
 
 yrken = Label(window, text= "Yrken")
 yrken.pack()
-dropdown2 = ttk.Combobox(window, values=["Option 1", "Option 2", "Option 3", "Option 4", "Option 5"])
+dropdown2 = ttk.Combobox(window, values=["Krigare", "Trollkarl", "Lärd", "Riddare", "Köpman"])
 dropdown2.pack()
 
 styrka = Label(window, text= "Styrka")
