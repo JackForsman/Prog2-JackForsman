@@ -36,7 +36,8 @@ class Bil():
     def kör():
         print("Bilen kör!")
 class Sportbil(Bil):
-    pass
+    def kör():
+        print("Bilen kör!")
 class Cykel(Fordon):
     def plinga():
         print("Pliiiing!!!")
@@ -47,7 +48,6 @@ def fånga(haj, torsk):
     else:
         return False
     
-
 haj = Haj("Broo", 100, 80)
 torsk = Torsk("hahah", 90, 28)
 print(fånga(haj, torsk))  

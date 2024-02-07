@@ -3,7 +3,7 @@ def uppgift1():
         if i % 7 == 0:
             print(i)
 
-uppgift1()
+#uppgift1()
 
 def uppgift2():
     string = input("Mata in din sträng: ")
@@ -16,7 +16,7 @@ def uppgift2():
             continue
     print(f"Det finns {counter} stycken siffror i strängen")
 
-uppgift2()
+#uppgift2()
 
 
 
@@ -39,5 +39,5 @@ def uppgift3():
     print(f"Primtal nummer tusen är {number-1}.")
 
 
-uppgift3()
+#uppgift3()
 

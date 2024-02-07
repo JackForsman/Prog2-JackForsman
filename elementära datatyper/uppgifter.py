@@ -17,4 +17,3 @@ def baklänges(ord):
     print(ord)
 
 baklänges("jag")
-
