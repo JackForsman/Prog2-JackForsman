@@ -16,8 +16,6 @@ io.on('connection', (socket) => {
     })
 })
 
-io.emit('some event', { someProperty: 'some value', otherProperty: 'other value' })
-
 io.on('connection', (socket) => {
     socket.broadcast.emit('hi')
 })
@@ -28,10 +26,14 @@ server.listen(3000, () => {
 
 io.on('connection', (socket) => {
     console.log('a user connected');
-    io.emit('chat message', "A user has joined");
+    socket.broadcast.emit('chat message', "A user has joined");
 
     socket.on('disconnect', () => {
       console.log('user disconnected');
     });
+    socket.on('typing', () => {
+        socket.broadcast.emit("chat message", "A user is typing...");
+    });
   });
+    
 

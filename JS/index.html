@@ -27,6 +27,7 @@
   var messages = document.getElementById('messages');
   var form = document.getElementById('form');
   var input = document.getElementById('input');
+  var count = 0
 
   form.addEventListener('submit', function(e) {
     e.preventDefault();
@@ -43,6 +44,15 @@
     window.scrollTo(0, document.body.scrollHeight);
   });
 
+  document.getElementById('input').addEventListener('input', typing);
+
+  function typing() {
+    if (count > 1) {
+      socket.emit('typing');
+    }
+    count += 1
+  } 
+</script>
     </script>
   </body>
   
