@@ -32,3 +32,41 @@
     right: 10px; 
     cursor: pointer; 
 }
+
+
+
+
+
+
+
+
+
+.comment-list {
+    width: 60%; 
+    margin: 0 auto; 
+}
+
+.comment { 
+    background-color: #d5d5d5; 
+    padding: 20px; 
+    margin-bottom: 20px;
+    border-radius: 20px; 
+    position: relative; 
+}
+
+.comment-author {
+    font-style: italic;
+    margin-bottom: 40px; 
+}
+
+.comment-content {
+    font-size: 16px; 
+    color: #333; 
+}
+
+.like-icon {
+    position: absolute; 
+    bottom: 10px; 
+    right: 10px; 
+    cursor: pointer; 
+}
