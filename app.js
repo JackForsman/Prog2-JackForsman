@@ -26,6 +26,10 @@ connection.connect((err) => {
     console.log('Connected to database');
 });
 
+
+
+
+
 app.get('/post_data', (req, res) => {
     const sql = "SELECT * FROM posts";
     connection.query(sql, (err, result) => {
@@ -51,11 +55,10 @@ app.post('/make_post', (req, res) => {
             return;
         }
         res.status(200).send("Successfull");
-        console.log("added")
+        console.log("added post")
     });
     
 });
-
 
 app.get('/post/:postId', (req, res) => {
     const sql = "SELECT * FROM posts WHERE Id = ?";
@@ -69,10 +72,77 @@ app.get('/post/:postId', (req, res) => {
             res.status(404).send('Post not found');
             return;
         }
-        console.log(result)
-        res.json(result)
+        console.log(result);
+        res.json(result);
     });
 });
+
+
+
+
+
+app.get('/comment_data/:Id', (req, res) => {
+    const sql = "SELECT * FROM comments WHERE postId=?";
+    connection.query(sql, [req.params.Id], (err, result) => {
+        if (err) {
+            console.error('Error retrieving comments:', err);
+            res.status(500).send('Error retrieving comments');
+            return;
+        }
+        res.json(result);
+    });
+});
+
+app.post('/make_comment', (req, res) => {
+    const comment_id = req.body.idComment
+    const comment_author = req.body.authorComment
+    const comment_content = req.body.contentComment
+    const comment_date = req.body.dateComment
+    const sql = "INSERT INTO comments (postId, Author, Content, Date) VALUES (?,?,?,?)"
+    connection.query(sql, [comment_id, comment_author, comment_content, comment_date], (err, result) => {
+        if (err) {
+            console.error('Error making comment:', err);
+            res.status(500).send('Error making comment');
+            return;
+        }
+        res.status(200).send("Successfull");
+        console.log("added comment")
+    });
+    
+});
+
+app.get('/like/:type/:id/:status', (req, res) => {
+    if (req.params.status == "like") {
+        const sql = `UPDATE ${req.params.type} SET Likes = Likes + 1 WHERE Id = ?`;
+        connection.query(sql, [parseInt(req.params.id)], (err, result) => {
+            if (err) {
+                console.error('Error liking:', err);
+                res.status(500).send('Error liking');
+                return;
+            }
+            res.status(200).send("Successful");
+            console.log("liked!");
+        });
+    }
+    if (req.params.status == "dislike") {
+        const sql = `UPDATE ${req.params.type} SET Likes = Likes - 1 WHERE Id = ?`;
+        connection.query(sql, [parseInt(req.params.id)], (err, result) => {
+            if (err) {
+                console.error('Error liking:', err);
+                res.status(500).send('Error liking');
+                return;
+            }
+            res.status(200).send("Successful");
+            console.log("disliked!");
+        });
+    }
+});
+
+
+    
+  
+    
+
 
 
 
