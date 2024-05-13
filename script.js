@@ -1,10 +1,12 @@
 
+//Generera dagens datum
 const date = new Date();
 const day = date.getDate();
 const month = date.getMonth() + 1;
 const year = date.getFullYear();
 const formattedDate = `${day}/${month}/${year}`;
 
+//För sidan där man laddar upp posts
 if (window.location.pathname === '/makePost.html') {
     const form = document.querySelector(".form");
 
@@ -44,7 +46,7 @@ if (window.location.pathname === '/makePost.html') {
 
 
 
-
+//För "main page"
 if (window.location.pathname === '/home.html') {
 
     fetch('http://localhost:3000/post_data')
@@ -78,6 +80,7 @@ if (window.location.pathname === '/home.html') {
         const likesElement = document.createElement('p');
         likesElement.classList.add('post-likes');
         likesElement.textContent = post.Likes;
+        likesElement.setAttribute('value', String(post.Id));
 
         const dateElement = document.createElement('p');
         dateElement.classList.add('post-date');
@@ -94,11 +97,10 @@ if (window.location.pathname === '/home.html') {
         button.addEventListener('click', () => like("posts", post.Id, button.classList.item(2)));
 
         const icon = document.createElement('i');
-        icon.classList.add('fa-solid', 'fa-thumbs-up');
+        icon.classList.add('fa-regular', 'fa-thumbs-up', "fa-2xl");
         icon.setAttribute('id', String(post.Id));
 
         
-        button.appendChild(icon);
 
         postElement.appendChild(titleElement);
         postElement.appendChild(authorElement);
@@ -107,7 +109,8 @@ if (window.location.pathname === '/home.html') {
         postElement.appendChild(dateElement);
         postElement.appendChild(idElement);
         postElement.appendChild(button);
-        
+        postElement.appendChild(icon);
+
         postlist.appendChild(postElement);
         
         });
@@ -119,18 +122,12 @@ if (window.location.pathname === '/home.html') {
 
 
 function fetchPost(id) {
-    window.location.href = "/post.html?id=" + id
-    var urlParams = new URLSearchParams(window.location.search);
-    console.log(urlParams.toString());
-    console.log("ok")
-    document.getElementById(title-post)
-
-    fetch("http://localhost:3000/")
+    window.location.href = "/post.html?id=" + id;
 }
 
 
 
-
+// Inne i en viss post och dess kommentarer
 if (window.location.pathname === '/post.html') {
     const urlParams = new URLSearchParams(window.location.search);
             const id = urlParams.get('id');
@@ -150,17 +147,19 @@ if (window.location.pathname === '/post.html') {
                 document.getElementById("title-post").textContent = data[0].Title
                 document.getElementById("author-post").textContent = data[0].Author
                 document.getElementById("content-post").textContent = data[0].Content
-                document.getElementById("likes-post").textContent = data[0].Likes
+                const likes = document.getElementById("likes-post")
+                likes.textContent = data[0].Likes
+                likes.setAttribute('value', String(data[0].Id));
 
                 const button = document.createElement('button');
-                button.setAttribute('type', 'button');
+                button.setAttribute('type', 'button');  
                 button.classList.add('icon-button', data[0].Id, "like" );
                 button.setAttribute('name', data[0].Id);
                 button.addEventListener('click', () => like("posts", data[0].Id, button.classList.item(2)));
 
                 const icon = document.createElement('i');
-                icon.classList.add('fa-solid', 'fa-thumbs-up');
-                icon.setAttribute('id', String(data.Id));
+                icon.classList.add('fa-regular', 'fa-thumbs-up', 'fa-2xl');
+                icon.setAttribute('id', String(data[0].Id));
 
                 container.appendChild(button);
                 container.appendChild(icon);
@@ -195,6 +194,7 @@ if (window.location.pathname === '/post.html') {
         const likesElement = document.createElement('p');
         likesElement.classList.add('comment-likes');
         likesElement.textContent = comment.Likes;
+        likesElement.setAttribute('value', String(comment.Id));
 
         const dateElement = document.createElement('p');
         dateElement.classList.add('comment-date');
@@ -207,18 +207,16 @@ if (window.location.pathname === '/post.html') {
         button.addEventListener('click', () => like("comments", comment.Id, button.classList.item(2)));
 
         const icon = document.createElement('i');
-        icon.classList.add('fa-solid', 'fa-thumbs-up');
+        icon.classList.add('fa-regular', 'fa-thumbs-up', "fa-2xl");
         icon.setAttribute('id', String(comment.Id));
 
-        
-        button.appendChild(icon);
-        
 
         commentElement.appendChild(authorElement);
         commentElement.appendChild(contentElement);
         commentElement.appendChild(likesElement);
         commentElement.appendChild(dateElement);
         commentElement.appendChild(button);
+        commentElement.appendChild(icon);
 
         commentlist.appendChild(commentElement);
         
@@ -280,11 +278,26 @@ function like(type,id,status) {
     if (status === "like") {
         document.querySelector(`[name="${id}"]`).classList.remove('like')
         document.querySelector(`[name="${id}"]`).classList.add('dislike')
+        const element = document.getElementById(id.toString());
+        element.classList.add('fa-solid');
+        element.classList.remove('fa-regular');
+        let likes = parseInt(document.querySelector(`[value="${id}"]`).textContent)
+        likes += 1
+        document.querySelector(`[value="${id}"]`).textContent = likes
+
+
 
     }
     if (status === "dislike") {
         document.querySelector(`[name="${id}"]`).classList.remove('dislike')
         document.querySelector(`[name="${id}"]`).classList.add('like')
+        const element = document.getElementById(id.toString());
+        element.classList.remove('fa-solid');
+        element.classList.add('fa-regular');
+        let likes = parseInt(document.querySelector(`[value="${id}"]`).textContent)
+        likes -= 1
+        document.querySelector(`[value="${id}"]`).textContent = likes
+
     }
 
 
