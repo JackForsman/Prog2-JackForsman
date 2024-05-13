@@ -26,14 +26,6 @@
     color: #333; 
 }
 
-.like-icon {
-    position: absolute; 
-    bottom: 10px; 
-    right: 10px; 
-    cursor: pointer; 
-}
-
-
 
 
 
@@ -64,9 +56,18 @@
     color: #333; 
 }
 
-.like-icon {
-    position: absolute; 
-    bottom: 10px; 
-    right: 10px; 
-    cursor: pointer; 
+button {
+    background: transparent;
+    color: transparent;
+    height:50px;
+    width:50px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.fa-thumbs-up {
+    margin-top: 22px;
+    margin-left: 8px;
 }
