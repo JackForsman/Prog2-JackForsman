@@ -86,13 +86,17 @@ if (window.location.pathname === '/home.html') {
         dateElement.classList.add('post-date');
         dateElement.textContent = post.Date;
 
+        const commentElement = document.createElement('i');
+        commentElement.classList.add("fa-regular", "fa-comment", "fa-3x");
+
         const idElement = document.createElement('button');
+        idElement.classList.add("post-comment-button");
         idElement.textContent = post.Id;
         idElement.addEventListener('click', () => fetchPost(post.Id));
 
         const button = document.createElement('button');
         button.setAttribute('type', 'button');
-        button.classList.add('icon-button', post.Id, "like" );
+        button.classList.add('post-icon-button', post.Id, "like" );
         button.setAttribute('name', post.Id);
         button.addEventListener('click', () => like("posts", post.Id, button.classList.item(2)));
 
@@ -106,10 +110,11 @@ if (window.location.pathname === '/home.html') {
         postElement.appendChild(authorElement);
         postElement.appendChild(contentElement);
         postElement.appendChild(likesElement);
-        postElement.appendChild(dateElement);
         postElement.appendChild(idElement);
         postElement.appendChild(button);
         postElement.appendChild(icon);
+        postElement.appendChild(commentElement);
+        postElement.appendChild(dateElement);
 
         postlist.appendChild(postElement);
         
@@ -145,7 +150,7 @@ if (window.location.pathname === '/post.html') {
                 const container = document.getElementById("container-post")
                 console.log(data)
                 document.getElementById("title-post").textContent = data[0].Title
-                document.getElementById("author-post").textContent = data[0].Author
+                document.getElementById("author-post").textContent = "By: " + data[0].Author
                 document.getElementById("content-post").textContent = data[0].Content
                 const likes = document.getElementById("likes-post")
                 likes.textContent = data[0].Likes
@@ -285,8 +290,6 @@ function like(type,id,status) {
         likes += 1
         document.querySelector(`[value="${id}"]`).textContent = likes
 
-
-
     }
     if (status === "dislike") {
         document.querySelector(`[name="${id}"]`).classList.remove('dislike')
@@ -299,6 +302,4 @@ function like(type,id,status) {
         document.querySelector(`[value="${id}"]`).textContent = likes
 
     }
-
-
 }
