@@ -95,6 +95,80 @@ button:hover {
 
 .circle {
     position: absolute;
-    margin-left: 62%;
-    top:14%
+    margin-left: 62.1%;
+    top:13.7%
+}
+
+.link {
+    display: block;
+    position: absolute;
+    height: 80px;
+    width :80px;
+    margin-left: 61.6%;
+    top: 12%;
+    z-index: 1;
+}
+
+.post-label {
+    font-size: 35px;
+}
+
+.form {
+    margin-left: 15%;
+}
+
+.post-input {
+    width: 50%;
+    height: 30px
+}
+
+.makePost {
+    background: grey;
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+.titleMakePost {
+    margin-top: 60px;
+    margin-left: 15%;
+    font-size: 40px;
+}
+
+input[type="submit"] {
+    height:40px;
+    width: 80px;
+}
+
+.circle2 {
+    position: absolute;
+    margin-left: 61.4%;
+    top: 12.7%;
+}
+
+.cross {
+    position: absolute;
+    margin-left: 63.1%;
+    top: 15.4%;
+}
+
+.post-date {
+    font-size: 20px;
+    position: absolute;
+    left: 85%;
+    top: 80%;
+}
+
+.fa-comment {
+    position: absolute;
+    left: 43%;
+    top: 79%;
+}
+
+.post-icon-button {
+    position: absolute;
+    top: 230px;
+    left:321px 
 }
