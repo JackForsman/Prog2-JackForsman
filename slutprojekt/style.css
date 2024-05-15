@@ -71,3 +71,30 @@ button:hover {
     margin-top: 22px;
     margin-left: 8px;
 }
+
+
+.post-content {
+    max-width: 100%;
+    background-color: red;
+    max-height: 100px;
+    overflow: hidden;
+    white-space: pre-wrap;
+}
+
+.top-title {
+    margin-top: 80px;
+    margin-left: 25%;
+    font-size: 2.5rem;
+}
+
+.plus {
+    position: absolute;
+    margin-left: 63%;
+    top:15%
+}
+
+.circle {
+    position: absolute;
+    margin-left: 62%;
+    top:14%
+}
