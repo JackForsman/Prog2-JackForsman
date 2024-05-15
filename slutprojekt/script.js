@@ -96,22 +96,22 @@ if (window.location.pathname === '/home.html') {
 
         const button = document.createElement('button');
         button.setAttribute('type', 'button');
-        button.classList.add('post-icon-button', post.Id, "like" );
+        button.classList.add('post-icon-button', post.Id, "like");
         button.setAttribute('name', post.Id);
+        button.setAttribute('id', 'post-icon-button-1' );
         button.addEventListener('click', () => like("posts", post.Id, button.classList.item(2)));
 
         const icon = document.createElement('i');
-        icon.classList.add('fa-regular', 'fa-thumbs-up', "fa-2xl");
+        icon.classList.add('fa-thumbs-up', 'fa-regular', 'fa-thumbs-up-post', "fa-3x");
         icon.setAttribute('id', String(post.Id));
 
-        
+        commentElement.appendChild(idElement)
+        icon.appendChild(button)
 
         postElement.appendChild(titleElement);
         postElement.appendChild(authorElement);
         postElement.appendChild(contentElement);
         postElement.appendChild(likesElement);
-        postElement.appendChild(idElement);
-        postElement.appendChild(button);
         postElement.appendChild(icon);
         postElement.appendChild(commentElement);
         postElement.appendChild(dateElement);
@@ -152,6 +152,7 @@ if (window.location.pathname === '/post.html') {
                 document.getElementById("title-post").textContent = data[0].Title
                 document.getElementById("author-post").textContent = "By: " + data[0].Author
                 document.getElementById("content-post").textContent = data[0].Content
+                document.getElementById("date-post").textContent = data[0].Date
                 const likes = document.getElementById("likes-post")
                 likes.textContent = data[0].Likes
                 likes.setAttribute('value', String(data[0].Id));
@@ -160,13 +161,13 @@ if (window.location.pathname === '/post.html') {
                 button.setAttribute('type', 'button');  
                 button.classList.add('icon-button', data[0].Id, "like" );
                 button.setAttribute('name', data[0].Id);
+                button.setAttribute('id', "post-icon-button-2");
                 button.addEventListener('click', () => like("posts", data[0].Id, button.classList.item(2)));
 
                 const icon = document.createElement('i');
-                icon.classList.add('fa-regular', 'fa-thumbs-up', 'fa-2xl');
+                icon.classList.add('fa-regular', 'fa-thumbs-up', "fa-thumbs-up-post2", 'fa-3x');
                 icon.setAttribute('id', String(data[0].Id));
-
-                container.appendChild(button);
+                icon.appendChild(button)
                 container.appendChild(icon);
             })
             .catch(error => {
@@ -180,9 +181,8 @@ if (window.location.pathname === '/post.html') {
         return response.json();
     })
     .then(comments => {
+        let counter = 1;
         const commentlist = document.getElementById('container-comments');
-
-        comments.reverse();
 
         comments.forEach(comment => {
         const commentElement = document.createElement('div');
@@ -191,6 +191,10 @@ if (window.location.pathname === '/post.html') {
         const authorElement = document.createElement('p');
         authorElement.classList.add('comment-author');
         authorElement.textContent = `Author: ${comment.Author}`;
+        
+
+        const idElement = document.createElement('p');
+        idElement.textContent = "# " + counter
 
         const contentElement = document.createElement('p');
         contentElement.classList.add('comment-content');
@@ -209,22 +213,24 @@ if (window.location.pathname === '/post.html') {
         button.setAttribute('type', 'button');
         button.classList.add('icon-button', comment.Id, "like" );
         button.setAttribute('name', comment.Id);
+        button.setAttribute('id', "post-icon-button-comment");
         button.addEventListener('click', () => like("comments", comment.Id, button.classList.item(2)));
 
         const icon = document.createElement('i');
-        icon.classList.add('fa-regular', 'fa-thumbs-up', "fa-2xl");
+        icon.classList.add('fa-regular', 'fa-thumbs-up-comment','fa-thumbs-up', "fa-2xl");
         icon.setAttribute('id', String(comment.Id));
-
-
+        
+        icon.appendChild(button);
+        
+        commentElement.appendChild(idElement);
         commentElement.appendChild(authorElement);
         commentElement.appendChild(contentElement);
         commentElement.appendChild(likesElement);
         commentElement.appendChild(dateElement);
-        commentElement.appendChild(button);
         commentElement.appendChild(icon);
 
         commentlist.appendChild(commentElement);
-        
+        counter += 1
         });
     })
     .catch(error => {
