@@ -1,49 +1,38 @@
 .post-list {
-    width: 60%; 
-    margin: 0 auto; 
+    margin-top: 10px;
 }
 
 .post { 
     background-color: #d5d5d5; 
+    margin: 0 auto; 
+    width: 60%; 
     padding: 20px; 
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     border-radius: 20px; 
     position: relative; 
 }
 
 .post-title {
-    font-size: 20px; 
+    font-size: 32px; 
     margin-bottom: 40px; 
 }
 
 .post-author {
     font-style: italic;
     margin-bottom: 40px; 
-}
-
-.post-content {
-    font-size: 16px; 
-    color: #333; 
+    font-size: 22px;
 }
 
 
-
-
-
-
-
-
-.comment-list {
-    width: 60%; 
-    margin: 0 auto; 
-}
 
 .comment { 
     background-color: #d5d5d5; 
     padding: 20px; 
-    margin-bottom: 20px;
     border-radius: 20px; 
     position: relative; 
+    margin: auto;
+    margin-bottom: 30px;
+    width: 60%;
 }
 
 .comment-author {
@@ -59,8 +48,10 @@
 button {
     background: transparent;
     color: transparent;
+    border-radius: 20px;
     height:50px;
     width:50px;
+    z-index: 1;
 }
 
 button:hover {
@@ -74,39 +65,57 @@ button:hover {
 
 
 .post-content {
-    max-width: 100%;
-    background-color: red;
-    max-height: 100px;
+    word-wrap: break-word;
+    display: -webkit-box;
     overflow: hidden;
-    white-space: pre-wrap;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    font-size: 25px;
 }
 
 .top-title {
-    margin-top: 80px;
-    margin-left: 25%;
-    font-size: 2.5rem;
+    margin-top: 5%;
+    margin-left: 20%;
+    font-size: 3.5rem;
 }
 
-.plus {
+.plus, .cross {
     position: absolute;
-    margin-left: 63%;
-    top:15%
 }
 
 .circle {
-    position: absolute;
-    margin-left: 62.1%;
-    top:13.7%
+    position: relative;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin-left: 55%;
+    top: -120px
+
+}
+
+.circle2 {
+    position: relative;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin-left: 55%;
+    top: -60px;
+
 }
 
 .link {
-    display: block;
     position: absolute;
     height: 80px;
-    width :80px;
-    margin-left: 61.6%;
-    top: 12%;
-    z-index: 1;
+    width: 80px;
+    border-radius: 25px;
+}
+
+.link:hover {
+    background-color: rgba(211, 211, 211, 0.2);
+}
+
+.post-comment-button:hover, .post-icon-button:hover {
+    background-color: rgba(88, 88, 88, 0.2);
 }
 
 .post-label {
@@ -132,9 +141,9 @@ textarea {
 }
 
 .titleMakePost {
-    margin-top: 60px;
+    margin-top: 80px;
     margin-left: 15%;
-    font-size: 40px;
+    font-size: 3.5rem;
 }
 
 input[type="submit"] {
@@ -142,33 +151,109 @@ input[type="submit"] {
     width: 80px;
 }
 
-.circle2 {
-    position: absolute;
-    margin-left: 61.4%;
-    top: 12.7%;
-}
-
-.cross {
-    position: absolute;
-    margin-left: 63.1%;
-    top: 15.4%;
-}
-
 .post-date {
-    font-size: 20px;
+    font-size: 22px;
     position: absolute;
-    left: 85%;
+    right: 30px;
     top: 80%;
 }
 
-.fa-comment {
-    position: absolute;
-    left: 43%;
-    top: 79%;
+.fa-thumbs-up-post {
+    position: relative;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    right: 48%;
+    top: 50px;
+    
 }
 
-.post-icon-button {
+.fa-comment {
+    position: relative;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin: auto 0 ;
+}
+
+.post-comment-button, #post-icon-button-1 {
     position: absolute;
-    top: 230px;
-    left:321px 
+}
+
+.post-likes {
+    position: absolute;
+    bottom: -12px;
+    left: 8%;
+    font-size: 32px;
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+#container-post {
+    
+    background-color: darkgray;
+    width: 100;
+    height: 500px;
+    margin: 0 auto;
+}
+
+.fa-thumbs-up-post2 {
+    position: absolute;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    top:10px;
+    left:1%;
+    top: 40%;
+}
+
+#post-icon-button-2 {
+    position: absolute;
+}
+
+.fa-thumbs-up-comment {
+    position: relative;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+#post-icon-button-comment {
+    position: absolute;
+}
+
+#title-post {
+    padding-top: 30px; 
+    padding-left: 30px;
+    font-size: 35px;
+}
+
+#author-post {
+    padding-left: 20px;
+    font-size: 22px;
+    font-style: italic;
+}
+
+#content-post {
+    width: 80%;
+    padding-left: 25px;
+    padding-top: 15px;
+    font-size: 24px;
+    word-wrap: break-word;
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+}
+
+#date-post {
+    padding-left: 15px;
+    font-size: 25px;
+}
+
+#likes-post {
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    left: 5.2%;
 }
