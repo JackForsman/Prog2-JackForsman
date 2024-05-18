@@ -4,6 +4,8 @@ const app = express();
 const port = 3000;
 const cors = require('cors');
 
+//Connection till databas och express
+
 app.use(express.json());
 
 app.use(cors({
@@ -28,7 +30,7 @@ connection.connect((err) => {
 
 
 
-
+//Server endpoints för att skapa och skicka ut data för posts
 
 app.get('/post_data', (req, res) => {
     const sql = "SELECT * FROM posts";
@@ -79,7 +81,7 @@ app.get('/post/:postId', (req, res) => {
 
 
 
-
+//Server endpoints för att skapa och skicka ut data för comments
 
 app.get('/comment_data/:Id', (req, res) => {
     const sql = "SELECT * FROM comments WHERE postId=?";
@@ -139,12 +141,7 @@ app.get('/like/:type/:id/:status', (req, res) => {
 });
 
 
-    
-  
-    
-
-
-
+//Server körs på port 3000
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
