@@ -1,3 +1,21 @@
+/* Style för home.html */
+
+.top-title {
+    margin-top: 5%;
+    margin-left: 20%;
+    font-size: 3.5rem;
+}
+
+.circle {
+    position: relative;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin-left: 55%;
+    top: -120px
+
+}
+
 .post-list {
     margin-top: 10px;
 }
@@ -23,47 +41,6 @@
     font-size: 22px;
 }
 
-
-
-.comment { 
-    background-color: #d5d5d5; 
-    padding: 20px; 
-    border-radius: 20px; 
-    position: relative; 
-    margin: auto;
-    margin-bottom: 30px;
-    width: 60%;
-}
-
-.comment-author {
-    font-style: italic;
-    margin-bottom: 40px; 
-}
-
-.comment-content {
-    font-size: 16px; 
-    color: #333; 
-}
-
-button {
-    background: transparent;
-    color: transparent;
-    border-radius: 20px;
-    height:50px;
-    width:50px;
-    z-index: 1;
-}
-
-button:hover {
-    cursor: pointer;
-}
-
-.fa-thumbs-up {
-    margin-top: 22px;
-    margin-left: 8px;
-}
-
-
 .post-content {
     word-wrap: break-word;
     display: -webkit-box;
@@ -73,82 +50,13 @@ button:hover {
     font-size: 25px;
 }
 
-.top-title {
-    margin-top: 5%;
-    margin-left: 20%;
-    font-size: 3.5rem;
-}
-
-.plus, .cross {
+.post-likes {
     position: absolute;
-}
-
-.circle {
-    position: relative;
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    margin-left: 55%;
-    top: -120px
-
-}
-
-.circle2 {
-    position: relative;
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    margin-left: 55%;
-    top: -60px;
-
-}
-
-.link {
-    position: absolute;
-    height: 80px;
-    width: 80px;
-    border-radius: 25px;
-}
-
-.link:hover {
-    background-color: rgba(211, 211, 211, 0.2);
-}
-
-.post-comment-button:hover, .post-icon-button:hover {
-    background-color: rgba(88, 88, 88, 0.2);
-}
-
-.post-label {
-    font-size: 35px;
-}
-
-.form {
-    margin-left: 15%;
-}
-
-.post-input {
-    width: 50%;
-    height: 30px
-}
-
-.makePost {
-    background: grey;
-}
-
-textarea {
-    resize: none;
-    height: 100px;
-}
-
-.titleMakePost {
-    margin-top: 80px;
-    margin-left: 15%;
-    font-size: 3.5rem;
-}
-
-input[type="submit"] {
-    height:40px;
-    width: 80px;
+    bottom: -12px;
+    left: 8%;
+    font-size: 32px;
+    font-weight: bold;
+    margin-left: 15px;
 }
 
 .post-date {
@@ -180,14 +88,51 @@ input[type="submit"] {
     position: absolute;
 }
 
-.post-likes {
-    position: absolute;
-    bottom: -12px;
-    left: 8%;
-    font-size: 32px;
-    font-weight: bold;
-    margin-left: 15px;
+/* Style för makePost.html */
+
+.makePost {
+    background: grey;
 }
+
+.titleMakePost {
+    margin-top: 80px;
+    margin-left: 15%;
+    font-size: 3.5rem;
+}
+
+.circle2 {
+    position: relative;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin-left: 55%;
+    top: -60px;
+
+}
+
+.form {
+    margin-left: 15%;
+}
+
+.post-label {
+    font-size: 35px;
+}
+
+.post-input {
+    width: 50%;
+    height: 30px
+}
+
+#content {
+    height: 100px;
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+/* Style för inlägget i post.html */
 
 #container-post {
     
@@ -195,31 +140,6 @@ input[type="submit"] {
     width: 100;
     height: 500px;
     margin: 0 auto;
-}
-
-.fa-thumbs-up-post2 {
-    position: absolute;
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    top:10px;
-    left:1%;
-    top: 40%;
-}
-
-#post-icon-button-2 {
-    position: absolute;
-}
-
-.fa-thumbs-up-comment {
-    position: relative;
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-}
-
-#post-icon-button-comment {
-    position: absolute;
 }
 
 #title-post {
@@ -244,11 +164,15 @@ input[type="submit"] {
     overflow: hidden;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 6;
+    line-height: 1.4;
 }
 
 #date-post {
+    position: absolute;
     padding-left: 15px;
     font-size: 25px;
+    left: 170px;
+    bottom: 565px
 }
 
 #likes-post {
@@ -256,4 +180,150 @@ input[type="submit"] {
     font-weight: bold;
     position: absolute;
     left: 5.2%;
+    bottom: 51%;
+}
+
+.fa-thumbs-up-post2 {
+    position: absolute;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    top:10px;
+    left:1%;
+    top: 40%;
+}
+
+#post-icon-button-2 {
+    position: absolute;
+}
+
+.circle3 {
+    position: relative;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    margin-left: 90%;
+    top: -450px;
+
+}
+
+/* Style för kommentarer i post.html */
+
+.comment { 
+    background-color: #d5d5d5; 
+    padding: 20px; 
+    border-radius: 20px; 
+    position: relative; 
+    margin: auto;
+    margin-bottom: 30px;
+    width: 60%;
+}
+
+.number {
+    font-size: 20px;
+}
+
+.comment-author {
+    margin-bottom: 30px;
+    font-size: 25px;
+
+}
+
+.comment-content {
+    font-size: 20px; 
+    width: 90%;
+    color: #333; 
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+.comment-likes {
+    position: relative;
+    font-size: 30px;
+    margin-left: 80px;
+    display: block;
+    bottom: -27px;
+    
+}
+
+.comment-date {
+    position: absolute;
+    font-size: 22px;
+    right: 20px;
+    bottom: 0px;
+}
+
+.fa-thumbs-up-comment {
+    position: absolute;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    left: 20px;
+    bottom: 38px; 
+}
+
+#post-icon-button-comment {
+    position: absolute;
+}
+
+/* Style för skapa kommentar i post.html */
+
+#container-make-comment {
+    margin-left: 20%;
+}
+
+#contentComment {
+    width: 700px;
+    font-size: 20px;
+}
+
+#authorComment {
+    width: 400px;
+    height: 35px;
+    font-size: 18px;
+}
+
+/* Allmänna styles på webbsidan */
+
+button {
+    background: transparent;
+    color: transparent;
+    border: transparent;
+    border-radius: 20px;
+    height:50px;
+    width:50px;
+    z-index: 1;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.fa-thumbs-up {
+    margin-top: 22px;
+    margin-left: 8px;
+}
+
+.plus, .cross {
+    position: absolute;
+}
+
+.link {
+    position: absolute;
+    height: 80px;
+    width: 80px;
+    border-radius: 25px;
+}
+
+.link:hover {
+    background-color: rgba(211, 211, 211, 0.2);
+}
+
+.post-comment-button:hover, .post-icon-button:hover {
+    background-color: rgba(88, 88, 88, 0.2);
+}
+
+input[type="submit"] {
+    height:40px;
+    width: 80px;
 }
