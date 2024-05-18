@@ -15,23 +15,31 @@
         <p id="date-post"></p>
         <p id="likes-post"></p>
     </div>
+    <i class="fa-regular fa-circle fa-4x circle3">
+        <i class="fa-solid fa-x fa-2xs cross"></i>
+        <a href="/home.html" class="link"></a>
+    </i>
     <br><br><br><br><br><br><br>
     <div id="container-comments">
         
     </div>
-    <br><br><br><br><br><br><br>
+    <br><br><br>
     <div id="container-make-comment">
+        <h1>Make a comment : </h1>
+        <br>
         <form class="form-comment">
-            <label for="author">Author: </label>
-            <input type="text" id="authorComment" name="authorComment" placeholder="Author for the comment">
-            <label for="content">Content: </label>
-            <textarea type="text" id="contentComment" name="contentComment" placeholder="Content for the comment"></textarea>
-            <input type="submit" value="submit">
+            <label for="author" style="font-size: 22px;">Author: </label>
+            <input required type="text" id="authorComment" name="authorComment" maxlength="30" placeholder="Author for the comment">
+            <br><br><br>
+            <label for="content" style="font-size: 22px;">Content: </label>
+            <br><br>
+            <textarea required type="text" id="contentComment" name="contentComment" maxlength="1000" placeholder="Content for the comment"></textarea>
+            <br><br>
+            <input type="submit" value="Submit">
         </form>
 
     </div>
     <br><br><br>
-    <a href="/home.html">Back to home!</a>
     <script src="script.js"></script>
 </body>
 </html>
