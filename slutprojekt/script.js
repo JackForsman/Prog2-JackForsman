@@ -6,10 +6,11 @@ const month = date.getMonth() + 1;
 const year = date.getFullYear();
 const formattedDate = `${day}/${month}/${year}`;
 
-//För sidan där man laddar upp posts
+//För sidan där man laddar upp posts till servern
 if (window.location.pathname === '/makePost.html') {
     const form = document.querySelector(".form");
 
+    //Datastruktur för själva formet som laddar upp posts
     form.addEventListener("submit", event => {
         event.preventDefault();
         const formData = new FormData(form);
@@ -44,9 +45,7 @@ if (window.location.pathname === '/makePost.html') {
     });
 }
 
-
-
-//För "main page"
+//Genererar data från servern för att skapa flödet av posts på homepagen (home.html)
 if (window.location.pathname === '/home.html') {
 
     fetch('http://localhost:3000/post_data')
@@ -56,6 +55,7 @@ if (window.location.pathname === '/home.html') {
         }
         return response.json();
     })
+    //Loopar igenom varje rad som skickas från databasen och genererar ny kod för varje post att synas på sidan
     .then(posts => {
         const postlist = document.getElementById('post-list');
 
@@ -125,14 +125,8 @@ if (window.location.pathname === '/home.html') {
     });
 }
 
+// Genererar all data när man klickar in på en viss post (posten själv och kommentarer)
 
-function fetchPost(id) {
-    window.location.href = "/post.html?id=" + id;
-}
-
-
-
-// Inne i en viss post och dess kommentarer
 if (window.location.pathname === '/post.html') {
     const urlParams = new URLSearchParams(window.location.search);
             const id = urlParams.get('id');
@@ -146,6 +140,7 @@ if (window.location.pathname === '/post.html') {
                 }
                 return response.json();
             })
+            // Först själva posten man klickade på
             .then(data => {
                 const container = document.getElementById("container-post")
                 console.log(data)
@@ -180,6 +175,7 @@ if (window.location.pathname === '/post.html') {
         }
         return response.json();
     })
+    // Alla kommentarer som tillhör just den posten
     .then(comments => {
         let counter = 1;
         const commentlist = document.getElementById('container-comments');
@@ -194,6 +190,7 @@ if (window.location.pathname === '/post.html') {
         
 
         const idElement = document.createElement('p');
+        idElement.classList.add('number');
         idElement.textContent = "# " + counter
 
         const contentElement = document.createElement('p');
@@ -236,7 +233,7 @@ if (window.location.pathname === '/post.html') {
     .catch(error => {
         console.error('Error:', error);
     });
-
+    // Form för att skapa en ny kommentar
     const form_comment = document.querySelector(".form-comment");
 
     form_comment.addEventListener("submit", event => {
@@ -274,6 +271,14 @@ if (window.location.pathname === '/post.html') {
     });
 }
 
+//Skickar en till den post man klickar, med postsens id som en query för att sedan kommunicera med servern
+
+function fetchPost(id) {
+    window.location.href = "/post.html?id=" + id;
+}
+
+// Funktion som skickar data till servern när man vill lika en post eller kommentar, eller ta bort sin like (dislike)
+
 function like(type,id,status) {
     console.log(type, id, status)
     fetch(`http://localhost:3000/like/${type}/${id}/${status}`, {
@@ -286,6 +291,7 @@ function like(type,id,status) {
     .catch(error => {
         console.error('Error:', error);
     });
+    // Ändrar klasser för att hålla reda på om en viss post/kommentar redan är likad, och visuellt med tumme upp ikonen
     if (status === "like") {
         document.querySelector(`[name="${id}"]`).classList.remove('like')
         document.querySelector(`[name="${id}"]`).classList.add('dislike')
