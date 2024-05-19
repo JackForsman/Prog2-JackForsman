@@ -171,8 +171,9 @@ textarea {
     position: absolute;
     padding-left: 15px;
     font-size: 25px;
-    left: 170px;
-    bottom: 565px
+    top:10px;
+    left:92%;
+    top: 46%;
 }
 
 #likes-post {
@@ -180,7 +181,7 @@ textarea {
     font-weight: bold;
     position: absolute;
     left: 5.2%;
-    bottom: 51%;
+    bottom: 45%;
 }
 
 .fa-thumbs-up-post2 {
@@ -190,7 +191,7 @@ textarea {
     align-items: center; 
     top:10px;
     left:1%;
-    top: 40%;
+    top: 45%;
 }
 
 #post-icon-button-2 {
