@@ -31,8 +31,8 @@ USE `post_db`;
 CREATE TABLE `comments` (
   `Id` int(100) NOT NULL,
   `postId` int(100) NOT NULL,
-  `Author` varchar(100) NOT NULL,
-  `Content` varchar(10) NOT NULL,
+  `Author` varchar(30) NOT NULL,
+  `Content` varchar(1000) NOT NULL,
   `Likes` int(240) NOT NULL DEFAULT 0,
   `Date` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -45,9 +45,9 @@ CREATE TABLE `comments` (
 
 CREATE TABLE `posts` (
   `Id` int(100) NOT NULL,
-  `Title` varchar(1000) NOT NULL,
-  `Author` varchar(100) NOT NULL,
-  `Content` varchar(100) NOT NULL,
+  `Title` varchar(40) NOT NULL,
+  `Author` varchar(30) NOT NULL,
+  `Content` varchar(1000) NOT NULL,
   `Likes` int(100) NOT NULL DEFAULT 0,
   `Date` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
