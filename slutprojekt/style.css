@@ -171,9 +171,8 @@ textarea {
     position: absolute;
     padding-left: 15px;
     font-size: 25px;
-    top:10px;
-    left:92%;
-    top: 46%;
+    top: 450px;
+    left: 87%;
 }
 
 #likes-post {
